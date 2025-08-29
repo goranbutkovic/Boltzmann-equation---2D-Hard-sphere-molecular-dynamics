@@ -2,14 +2,14 @@
 clear; clc; close all;
 
 % --- Parameters ---
-N = 80;           % number of particles
+N = 280;           % number of particles
 L = 10;           % box size
 r = 0.15;         % particle radius (repulsive core)
 epsilon = 1.0;    % attractive potential depth
 dt = 0.003;       % time step
 steps_per_frame = 10;
 kB = 1.0;         % Boltzmann constant
-targetT = 1.0;    % initial temperature
+targetT = 0.01;    % initial temperature
 
 % --- Initial positions and velocities ---
 x = 0.3*rand(1,N)*L;
@@ -26,7 +26,7 @@ fig = figure('Color','w');
 h = scatter(x,y,80,'filled');
 axis([0 L 0 L]); axis square; box on;
 colormap(parula);
-title('Sticky Hard-Sphere MD: Drag T to see droplet/gas');
+title('Phase transition MD simulation');
 
 % slider for temperature
 sld = uicontrol('Style','slider','Units','normalized',...
@@ -34,9 +34,19 @@ sld = uicontrol('Style','slider','Units','normalized',...
 txt = uicontrol('Style','text','Units','normalized','Position',[0.81 0.02 0.16 0.05],...
     'String',sprintf('T = %.2f',targetT), 'FontSize',10);
 
+
+
 % --- Simulation loop ---
 while ishandle(fig)
-    targetT = sld.Value;
+
+        if targetT < 5
+            targetT = targetT+0.005;
+        else
+            break
+        end
+
+
+    %targetT = sld.Value;
     txt.String = sprintf('T = %.2f',targetT);
     
     for step = 1:steps_per_frame
@@ -82,7 +92,7 @@ while ishandle(fig)
                 % --- Short-range attraction ---
                 if dist > 2*r && dist < 4*r
                     % simple linear attractive impulse
-                    fmag = epsilon*(6 - (dist-2*r)/(2*r)); % linearly decreases to zero
+                    fmag = epsilon*(15 - (dist-2*r)/(2*r)); % linearly decreases to zero
                     vx(i) = vx(i) - fmag*nx*dt;
                     vy(i) = vy(i) - fmag*ny*dt;
                     vx(j) = vx(j) + fmag*nx*dt;
