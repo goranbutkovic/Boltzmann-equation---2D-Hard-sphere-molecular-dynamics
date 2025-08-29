@@ -14,13 +14,8 @@ $$
 
 where the collision term is
 
-$$
-\left(\frac{\partial f(\mathbf{v}_1)}{\partial t}\right)_{\rm coll} =
-\int \mathrm{d}\mathbf{v}_2 \int \mathrm{d}\Omega \, 
-\sigma(\mathbf{v}_1,\mathbf{v}_2,\Omega) \, |\mathbf{v}_1 - \mathbf{v}_2|
-[f(\mathbf{v}_1') f(\mathbf{v}_2') - f(\mathbf{v}_1) f(\mathbf{v}_2)].
-$$
-
+$(\partial f(v_1)/\partial t)_{\rm coll} = \int dv_2 \int d\Omega \, 
+\sigma(v_1,v_2,\Omega) \, |v_1 - v_2| \, [f(v_1') f(v_2') - f(v_1) f(v_2)]$
 ---
 
 ## 2. Numerical Approximation
