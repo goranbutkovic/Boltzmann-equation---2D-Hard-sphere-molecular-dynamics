@@ -18,7 +18,7 @@ $$
 \left(\frac{\partial f(\mathbf{v}_1)}{\partial t}\right)_{\rm coll} =
 \int \mathrm{d}\mathbf{v}_2 \int \mathrm{d}\Omega \, 
 \sigma(\mathbf{v}_1,\mathbf{v}_2,\Omega) \, |\mathbf{v}_1 - \mathbf{v}_2|
-\Big[f(\mathbf{v}_1') f(\mathbf{v}_2') - f(\mathbf{v}_1) f(\mathbf{v}_2)\Big].
+[f(\mathbf{v}_1') f(\mathbf{v}_2') - f(\mathbf{v}_1) f(\mathbf{v}_2)].
 $$
 
 ---
